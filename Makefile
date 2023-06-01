@@ -1,32 +1,26 @@
-################################################################################
-#             Makefile for the CS 3410 RISC-V Interpreter Project              #
-################################################################################
+# Customized makefile for COMP2020 project. 
 
-# Additional flags for the compiler
-CFLAGS := -std=c99 -D_BSD_SOURCE -Wall -g
+# Group members:
+# + Nguyen Tuan Anh
+# + Ta Viet Thang
+# + Huynh Quynh Anh
 
-# Default target to run, which creates a `riscv_interpreter` executable
+CFLAGS = -std=c99 -D_BSD_SOURCE -Wall -g
+
 all: riscv_interpreter
 
-# Compiles the student linkedlist.c into an object file
-# Then, combines the object file into a single `linkedlist` executable
-linkedlist: linkedlist.o linkedlist_main.o
-	gcc $(CFLAGS) -o $@ $^
+linkedlist: linkedlist.o linkedlist_main.o 
+	$(CC) $(CFLAGS) -o ./build/linkedlist ./object/linkedlist.o ./object/linkedlist_main.o
 
-# Compiles the student linkedlist.c, hashtable.c into object files
-# Then, combines the object files into a single `hashtable` executable
 hashtable: linkedlist.o hashtable.o hashtable_main.o
-	gcc $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o ./build/hashtable ./object/linkedlist.o ./object/hashtable.o ./object/hashtable_main.o
 
-# Compiles the student linkedlist.c, hashtable.c, and riscv.c into object files
-# Then, combines the object files into a single `riscv_interpreter` executable
 riscv_interpreter: linkedlist.o hashtable.o riscv.o riscv_interpreter.o
-	gcc $(CFLAGS) -Werror -o $@ $^
+	$(CC) $(CFLAGS) -Werror -o ./build/riscv_interpreter ./object/linkedlist.o ./object/hashtable.o ./object/riscv.o ./object/riscv_interpreter.o
 
-# Wildcard rule that allows for the compilation of a *.c file to a *.o file
-%.o : %.c
-	gcc -c $(CFLAGS) $< -o $@
+%.o: ./source/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+	mv *.o ./object/
 
-# Removes any executables and compiled object files
 clean:
-	rm -f linkedlist hashtable riscv_interpreter *.o
+	rm -f ./object/*.o ./build/riscv_interpreter ./build/linkedlist_main ./build/hashtable_main

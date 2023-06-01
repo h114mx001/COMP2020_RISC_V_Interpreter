@@ -21,7 +21,7 @@ void print_registers(registers_t *registers)
 {
     for (int i = 0; i < 32; i++)
     {
-        fprintf(stderr, "r[%d] = 0x%x\n", i, registers->r[i]);
+        fprintf(stderr, "r[%d] = 0x%08x\n", i, registers->r[i]);
     }
 }
 
