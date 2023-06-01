@@ -23,4 +23,4 @@ riscv_interpreter: linkedlist.o hashtable.o riscv.o riscv_interpreter.o
 	mv *.o ./object/
 
 clean:
-	rm -f ./object/*.o ./build/riscv_interpreter ./build/linkedlist_main ./build/hashtable_main
+	rm -f ./object/*.o ./build/riscv_interpreter ./build/linkedlist ./build/hashtable ./build/linkedlst_main ./build/hashtable_main
