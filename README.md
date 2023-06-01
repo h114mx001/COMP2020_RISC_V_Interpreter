@@ -34,4 +34,11 @@ To run new file, please prepare a RISC-V code file and run
 
 For debug mode, run the binary with `-d` flag. 
 
+## Compile the code only 
 
+```bash
+make riscv_interpreter
+./build/riscv_interpreter < /path/to/your_file
+# for cleaning the repository only
+make clean
+```
