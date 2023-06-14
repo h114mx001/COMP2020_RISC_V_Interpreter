@@ -18,7 +18,7 @@ add x7, x6, x5 #Expected value of x7: 0x80000000
 
 add x8, x0, x0
 addi x8, x8, -1 
-add x8, x8, x8 #Expected value of x8: 0x00000000
+add x8, x8, x8 #Expected value of x8: 0xfffffffe
 
 #LogicOperators do not have edge cases, so having some random test cases is 
 #good enough
